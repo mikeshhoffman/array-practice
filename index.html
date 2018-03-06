@@ -3,7 +3,17 @@
 <head>
   <title>Magic 8 Ball</title>
   <meta charset="utf-8">
+  <!-- Make scale correct across devices: -->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
   <style type="text/css">
+    * {
+      /* Eliminate browser-specific margin and padding default values: */
+      margin: 0;
+      padding: 0;
+      /* Make margin and padding width/height sizes more straightforward than content-box: */
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
       margin: 0;
@@ -43,13 +53,38 @@
 </header>
 
 <section class="container">
-  <img src="http://appinventor.mit.edu/explore/sites/all/files/Teach/media/image_8_ball.jpg" alt="a magic 8 ball">
+  <img src="http://appinventor.mit.edu/explore/sites/all/files/Teach/media/image_8_ball.jpg" 
+       alt="a magic 8 ball" 
+       onclick="getMagic('whoa')">
 
   <div>
-    <form name="question">
-      <!-- TODO: Add a text input and submit button, attach to the form handler function you write in scripts.js -->
+    <form name="qForm" onsubmit="showAnswer()">
+      <!-- 
+      TODO: 
+      Attach to the form handler function you write in scripts.js. 
+      Add a text input and submit button.
+      -->
+      <label>What's your question?
+        <input type="text" name="question">
+      </label>
+      <input type="submit">
+    </form>
+    
+    <!-- Give the user the ability to add a new fortune to the array of possible answers, if it is not already in the array. 
+     This will involve another form and form handler. -->
+    <form name="aForm" onsubmit="addAnswer()">
+      <!-- 
+      TODO: 
+      Attach to the form handler function you write in scripts.js. 
+      Add a text input and submit button.
+      -->
+      <label>What possible answer to add?
+        <input type="text" name="answer">
+      </label>
+      <input type="submit">
     </form>
   </div>
+  
 </section>
 <script src="scripts.js"></script>
 </body>
