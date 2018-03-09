@@ -43,6 +43,23 @@
       justify-content: space-around;
       margin-top: 15vh;
     }
+    
+    #fortune-container {
+      padding-top: 1rem;
+    }
+    
+    .red {
+      border: 1px solid red;
+    }
+
+    .green {
+      border: 1px solid green;
+    }
+    
+    .left {
+      margin-left: -3rem;
+    }
+    
   </style>
 </head>
 
@@ -56,9 +73,9 @@
   <img src="http://appinventor.mit.edu/explore/sites/all/files/Teach/media/image_8_ball.jpg" 
        alt="a magic 8 ball" 
        onclick="getMagic('whoa')">
-
+  
   <div>
-    <form name="qForm" onsubmit="showAnswer()">
+    <form name="qForm" id="qForm" onsubmit="showAnswer()">
       <!-- 
       TODO: 
       Attach to the form handler function you write in scripts.js. 
@@ -68,11 +85,13 @@
         <input type="text" name="question">
       </label>
       <input type="submit">
+      <div id="fortune-container">
+      </div>
     </form>
     
     <!-- Give the user the ability to add a new fortune to the array of possible answers, if it is not already in the array. 
      This will involve another form and form handler. -->
-    <form name="aForm" onsubmit="addAnswer()">
+    <form name="aForm" id="aForm" onsubmit="addAnswer()">
       <!-- 
       TODO: 
       Attach to the form handler function you write in scripts.js. 
@@ -85,6 +104,7 @@
     </form>
   </div>
   
+
 </section>
 <script src="scripts.js"></script>
 </body>

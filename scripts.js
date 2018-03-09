@@ -2,7 +2,8 @@
 
 // TODO: Assign value of "answers" variable to an array of strings
 // that could be answers to magic 8 ball type questions
-var answers = [ "It is certain", 
+// The official Magic 8 Ball answers:
+var answers = [ "It is certain",
                 "It is decidedly so", 
                 "Without a doubt", 
                 "Yes definitely", 
@@ -24,11 +25,31 @@ var answers = [ "It is certain",
                 "Very doubtful"]
 
 function getMagic(message) {
+  
+  // get the img elem
+  var img = document.querySelector("img")
+  // set alt attr value
+  img.setAttribute("alt", "so magic!!")
+  img.classList.toggle("left")
+  
   console.log("so magic!! " + message)
   var ansNum = Math.floor(Math.random() * answers.length)
   console.log(answers[ansNum])
   // or could call addAnswer()
 }
+
+// get the new div #fortune-container and the existing <small> element in HTML, and assign each one to a variable. 
+// You can use either get method from previous slide
+//var fortElem = document.getElementById('fortune-container')
+//var small = document.querySelector("small")
+
+//container.innerHTML = "<p></p>"
+
+//var forms = document.getElementsByTagName("form")
+//var forms = document.querySelectorAll("form")
+//console.log(forms)
+
+
 
 /* TODO: Write a form handler function that will:
   1. capture the question asked in the form, and assign it to a variable
@@ -42,7 +63,20 @@ function showAnswer() {
   console.log("Your question: " + userQuestion)
   var ansNum = Math.floor(Math.random() * answers.length)
   console.log(answers[ansNum])
+  
+  var container = document.querySelector('#fortune-container')
+  container.innerHTML = answers[ansNum]
+
   document.qForm.question.value = ""
+  
+  // Remove "red" class from all other forms
+  var forms = document.querySelectorAll("form")
+  for (var i=0; i<forms.length; i++){
+    forms[i].classList.remove("red")
+  }
+
+  // Add "red" class to this form
+  document.getElementById("qForm").classList.add("red")
 }
 
 // Adds a new fortune to the array of possible answers, if the new answer is not already in the array.
@@ -59,27 +93,18 @@ function addAnswer() {
     console.log("That answer already exists")
     }
   document.aForm.answer.value = ""
+
+  // Remove "red" class from all other forms
+  var forms = document.querySelectorAll("form")
+  for (var i=0; i<forms.length; i++){
+    forms[i].classList.remove("red")
+  }
+
+  // Add "red" class to this form
+  document.getElementById("aForm").classList.add("red")
+  // Alternative way of selecting the form to change its classlist:
+//  document.aForm.classList.add("red")
+  
+    document.querySelector('#fortune-container').innerHTML = ""
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
